@@ -42,7 +42,7 @@ const Server = (props) => {
               
 
               <div>
-                <a href="#" onClick={(e) => deleteReg(server)}>Remove</a>
+                <button onClick={(e) => deleteReg(server)}>Remove</button>
               </div>  
         </div>
     );
