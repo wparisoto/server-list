@@ -1,0 +1,22 @@
+.server{
+    display: flex;
+    flex-flow: column;
+    border: 1px solid black;
+    padding-right: 5px;
+    margin: 3px;
+}
+
+.campo{
+    display: flex;
+    justify-content: space-between;
+}
+
+span{
+    font-size: 12px;
+}
+
+a {
+    cursor: pointer;
+    font-size: 12px;
+    color: crimson;
+}
