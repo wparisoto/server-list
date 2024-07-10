@@ -11,12 +11,3 @@
     justify-content: space-between;
 }
 
-span{
-    font-size: 12px;
-}
-
-a {
-    cursor: pointer;
-    font-size: 12px;
-    color: crimson;
-}
