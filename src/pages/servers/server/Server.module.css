@@ -9,5 +9,9 @@
 .campo{
     display: flex;
     justify-content: space-between;
+    margin: 2px;
 }
 
+.campo_input{
+    width: 80%;
+}
