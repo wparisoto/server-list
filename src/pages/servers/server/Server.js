@@ -10,26 +10,29 @@ const Server = (props) => {
     const [projeto, setProjeto] = useState(server.projeto)
     const [descricao, setDescricao] = useState(server.descricao)
   
+
     const onChangeNome = (value) => {
         setNome(value)
-        updateReg({id, nome, projeto, descricao})
+        updateReg({id, nome: value, projeto, descricao})
     }
 
     const onChangeProjeto = (value) => {
         setProjeto(value)
-        updateReg({id, nome, projeto, descricao})
+        updateReg({id, nome, projeto: value, descricao})
      }
 
      const onChangeDescricao = (value) => {
       setDescricao(value)
-      updateReg({id, nome, projeto, descricao})
+      updateReg({id, nome, projeto, descricao: value})
    }
 
     return (
         <div className={styles.server}>
+                <span>{server.id}</span>
                 <div className={styles.campo}>
                   <span>Nome:</span>
                   <input type="text" placeholder="Nome" value={nome} onChange={(e) => onChangeNome(e.target.value) }></input>
+                  {nome}
                 </div>
                 <div className={styles.campo}>
                   <span>Projeto:</span>

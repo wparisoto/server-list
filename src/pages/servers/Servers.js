@@ -15,13 +15,12 @@ const Servers = () => {
       dados.servers[index].projeto = server.projeto
       dados.servers[index].descricao = server.descricao
         
-      setDados(dados)  
+      setDados({...dados})  
       console.log(dados)
      }
 
      const deleteReg = (server) => {
       let index = dados.servers.findIndex(s => s.id === server.id);
-
       dados.servers.splice(index, 1)
       setDados({...dados})
      }
@@ -50,9 +49,11 @@ const Servers = () => {
      const handleAddDoc = async (e) => {
       e.preventDefault();  
 
-      let size = dados.servers.length
+      let ids = dados.servers.map(s => s.id)
+      let maiorId = Math.max.apply(null, ids );
+
       dados.servers.push({
-        id: size + 1, 
+        id: maiorId + 1, 
         nome: '', 
         projeto: '',
         descricao: ''
@@ -105,6 +106,7 @@ const Servers = () => {
           </div>
           )} 
           
+          {/* {JSON.stringify(dados)} */}
       </div>
     );
   };
