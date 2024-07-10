@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../servers/server/Server.module.css";
 
 const Server = (props) => {
     const { server, updateReg, deleteReg } = props;
 
 
-    const [id] = useState(server.id)
+    const [id, setId] = useState(server.id)
     const [nome, setNome] = useState(server.nome)
     const [projeto, setProjeto] = useState(server.projeto)
     const [descricao, setDescricao] = useState(server.descricao)
   
+    useEffect(() => {
+      setId(server.id)
+      setNome(server.nome)
+      setProjeto(server.projeto)
+      setDescricao(server.descricao)
+    }, [server]);
 
     const onChangeNome = (value) => {
         setNome(value)
@@ -28,11 +34,9 @@ const Server = (props) => {
 
     return (
         <div className={styles.server}>
-                <span>{server.id}</span>
                 <div className={styles.campo}>
                   <span>Nome:</span>
                   <input type="text" placeholder="Nome" value={nome} onChange={(e) => onChangeNome(e.target.value) }></input>
-                  {nome}
                 </div>
                 <div className={styles.campo}>
                   <span>Projeto:</span>
@@ -40,7 +44,7 @@ const Server = (props) => {
                 </div>
                 <div className={styles.campo}>
                   <span>Descrição:</span>
-                  <textarea placeholder="Descrição" onChange={(e) => onChangeDescricao(e.target.value) }>{descricao}</textarea>
+                  <textarea placeholder="Descrição" onChange={(e) => onChangeDescricao(e.target.value) } value={descricao}></textarea>
                 </div>
               
 
