@@ -53,7 +53,7 @@ const Servers = () => {
       let maiorId = Math.max.apply(null, ids );
 
       dados.servers.push({
-        id: maiorId + 1, 
+        id: (maiorId > 0 ? maiorId: 0) + 1, 
         nome: '', 
         projeto: '',
         descricao: ''
