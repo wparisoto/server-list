@@ -36,15 +36,22 @@ const Server = (props) => {
         <div className={styles.server}>
                 <div className={styles.campo}>
                   <span>Nome:</span>
-                  <input type="text" placeholder="Nome" value={nome} onChange={(e) => onChangeNome(e.target.value) }></input>
+                  <input type="text" className={styles.campo_input} placeholder="Nome" value={nome} onChange={(e) => onChangeNome(e.target.value) }></input>
                 </div>
                 <div className={styles.campo}>
                   <span>Projeto:</span>
-                  <input type="text" placeholder="Projeto" value={projeto} onChange={(e) => onChangeProjeto(e.target.value) }></input>
+                  <input type="text" className={styles.campo_input} placeholder="Projeto" value={projeto} onChange={(e) => onChangeProjeto(e.target.value) }></input>
                 </div>
                 <div className={styles.campo}>
                   <span>Descrição:</span>
-                  <textarea placeholder="Descrição" onChange={(e) => onChangeDescricao(e.target.value) } value={descricao}></textarea>
+                  <textarea 
+                    placeholder="Descrição" 
+                    onChange={(e) => onChangeDescricao(e.target.value) } 
+                    value={descricao}
+                    rows={10}
+                    cols={30}
+                    >
+                  </textarea>
                 </div>
               
 
