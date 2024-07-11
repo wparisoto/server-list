@@ -6,7 +6,7 @@ import { db } from "../../firebase/config";
 import { addDoc, updateDoc, doc, collection, getDocs } from "firebase/firestore";
 
 const Servers = () => {
-     const [loading, setLoading] = useState(false);
+     const [loading, setLoading] = useState(true);
      const [dados, setDados] = useState({id: null, servers: []});
  
      const updateReg = (server) => {
@@ -29,7 +29,11 @@ const Servers = () => {
      const fetchPost = async () => {
          await getDocs(collection(db, "dados"))
              .then((querySnapshot)=>{               
+              
+              setLoading(false)
+
               const newData = querySnapshot.docs.map((doc) => ({
+                
                 id:doc.id,   
                 ...doc.data()
                   }));
@@ -38,6 +42,8 @@ const Servers = () => {
                     setDados(newData[0]);                
                     console.log(newData[0]);
                   }
+             }).catch(err =>{
+              console.log(err)
              })
      }
     
