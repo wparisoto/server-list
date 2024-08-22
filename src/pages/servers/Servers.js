@@ -29,16 +29,16 @@ const Servers = () => {
  
      const fetchPost = async () => {
 
-            onSnapshot(collection(db, "dados"), { includeMetadataChanges: false }, (doc) => {
-               doc.docChanges().forEach((change) => {
-                 if (change.type === 'modified') {
-                   console.log('Documento modificado');
-                   setChangedOtherSession(true)
-                 }
-               });
-     
-           });
-          
+        onSnapshot(collection(db, "dados"), { includeMetadataChanges: false }, (doc) => {
+          doc.docChanges().forEach((change) => {
+            if (change.type === 'modified') {
+              console.log('Documento modificado');
+              setChangedOtherSession(true)
+            }
+          });
+
+      });
+
          await getDocs(collection(db, "dados"))
              .then((querySnapshot)=>{               
               
@@ -57,6 +57,10 @@ const Servers = () => {
              }).catch(err =>{
               console.log(err)
              })
+
+
+    
+
      }
     
      useEffect(()=>{
@@ -111,20 +115,20 @@ const Servers = () => {
 
 
     return (
-         <div className={changedOtherSession && styles.disabled}>
-               {changedOtherSession && <span style={{fontSize: "20px"}}>Formulário alterado em outra sessão. Recarregue!</span>}
-               <div className={styles.container}>
-                     {dados && dados.servers && dados.servers.map((server, index) => <Server key={index} server={server} updateReg={updateReg} deleteReg={deleteReg}></Server>)}  
-               </div>
-               {loading && <span>Waiting...</span>}
-               
-               {!changedOtherSession && !loading && (
-                 <div>
-                   <button onClick={handleUpdateDoc} disabled={loading}>Save</button>
-                   <button onClick={handleAddDoc} disabled={loading}>Add</button>
-               </div>
-               )} 
-           </div>
+      <div className={changedOtherSession && styles.disabled}>
+          {changedOtherSession && <span style={{fontSize: "20px"}}>Formulário alterado em outra sessão. Recarregue!</span>}
+          <div className={styles.container}>
+                {dados && dados.servers && dados.servers.map((server, index) => <Server key={index} server={server} updateReg={updateReg} deleteReg={deleteReg}></Server>)}  
+          </div>
+          {loading && <span>Waiting...</span>}
+          
+          {!changedOtherSession && !loading && (
+            <div>
+              <button onClick={handleUpdateDoc} disabled={loading}>Save</button>
+              <button onClick={handleAddDoc} disabled={loading}>Add</button>
+          </div>
+          )} 
+      </div>
     );
   };
   
