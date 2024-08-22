@@ -31,7 +31,7 @@ const Servers = () => {
 
         onSnapshot(collection(db, "dados"), { includeMetadataChanges: false }, (doc) => {
           doc.docChanges().forEach((change) => {
-            if (change.type === 'modified') {
+            if (!doc.metadata.hasPendingWrites && change.type === 'modified') {
               console.log('Documento modificado');
               setChangedOtherSession(true)
             }
