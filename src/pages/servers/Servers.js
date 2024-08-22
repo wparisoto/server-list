@@ -3,7 +3,7 @@ import Server from "./server/Server";
 import { useState, useEffect } from "react";
 
 import { db } from "../../firebase/config";
-import { addDoc, updateDoc, doc, collection, getDocs } from "firebase/firestore";
+import { addDoc, updateDoc, doc, collection, getDocs, onSnapshot } from "firebase/firestore";
 
 const Servers = () => {
      const [loading, setLoading] = useState(true);
