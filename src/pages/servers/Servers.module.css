@@ -3,3 +3,7 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.disabled * {
+    opacity: 80%;
+}
