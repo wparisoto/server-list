@@ -116,7 +116,7 @@ const Servers = () => {
 
     return (
       <div className={changedOtherSession && styles.disabled}>
-          {changedOtherSession && <span style={{fontSize: "20px"}}>Formulário alterado em outra sessão. Recarregue!</span>}
+          {changedOtherSession && <span style={{fontSize: "20px"}}>Form changed in other session. Please reload!</span>}
           <div className={styles.container}>
                 {dados && dados.servers && dados.servers.map((server, index) => <Server key={index} server={server} updateReg={updateReg} deleteReg={deleteReg}></Server>)}  
           </div>
