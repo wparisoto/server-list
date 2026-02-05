@@ -1,65 +1,99 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../../servers/server/Server.module.css";
 
 const Server = (props) => {
-    const { server, updateReg, deleteReg } = props;
+  const { server, updateReg, deleteReg } = props;
 
+  const textareaRef = useRef(null);
+  const [id, setId] = useState(server.id)
+  const [nome, setNome] = useState(server.nome)
+  const [projeto, setProjeto] = useState(server.projeto)
+  const [descricao, setDescricao] = useState(server.descricao)
 
-    const [id, setId] = useState(server.id)
-    const [nome, setNome] = useState(server.nome)
-    const [projeto, setProjeto] = useState(server.projeto)
-    const [descricao, setDescricao] = useState(server.descricao)
-  
-    useEffect(() => {
-      setId(server.id)
-      setNome(server.nome)
-      setProjeto(server.projeto)
-      setDescricao(server.descricao)
-    }, [server]);
+  useEffect(() => {
+    setId(server.id)
+    setNome(server.nome)
+    setProjeto(server.projeto)
+    setDescricao(server.descricao)
+  }, [server]);
 
-    const onChangeNome = (value) => {
-        setNome(value)
-        updateReg({id, nome: value, projeto, descricao})
+  // Restaurar dimensões do textarea do localStorage
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    const storageKey = `textarea-size-${id}`;
+    const savedSize = localStorage.getItem(storageKey);
+
+    if (savedSize) {
+      const { width, height } = JSON.parse(savedSize);
+      textarea.style.width = width;
+      textarea.style.height = height;
     }
 
-    const onChangeProjeto = (value) => {
-        setProjeto(value)
-        updateReg({id, nome, projeto: value, descricao})
-     }
+    // Observar mudanças no tamanho do textarea
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { width, height } = entry.contentRect;
+        const sizeData = {
+          width: `${width}px`,
+          height: `${height}px`
+        };
+        localStorage.setItem(storageKey, JSON.stringify(sizeData));
+      }
+    });
 
-     const onChangeDescricao = (value) => {
-      setDescricao(value)
-      updateReg({id, nome, projeto, descricao: value})
-   }
+    resizeObserver.observe(textarea);
 
-    return (
-        <div className={styles.server}>
-                <div className={styles.campo}>
-                  <span>Nome:</span>
-                  <input type="text" className={styles.campo_input} placeholder="Nome" value={nome} onChange={(e) => onChangeNome(e.target.value) }></input>
-                </div>
-                <div className={styles.campo}>
-                  <span>Projeto:</span>
-                  <input type="text" className={styles.campo_input} placeholder="Projeto" value={projeto} onChange={(e) => onChangeProjeto(e.target.value) }></input>
-                </div>
-                <div className={styles.campo}>
-                  <span>Descrição:</span>
-                  <textarea 
-                    placeholder="Descrição" 
-                    onChange={(e) => onChangeDescricao(e.target.value) } 
-                    value={descricao}
-                    rows={10}
-                    cols={30}
-                    >
-                  </textarea>
-                </div>
-              
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [id]);
 
-              <div>
-                <button onClick={(e) => deleteReg(server)}>Remove</button>
-              </div>  
-        </div>
-    );
-  };
-  
-  export default Server;
+  const onChangeNome = (value) => {
+    setNome(value)
+    updateReg({ id, nome: value, projeto, descricao })
+  }
+
+  const onChangeProjeto = (value) => {
+    setProjeto(value)
+    updateReg({ id, nome, projeto: value, descricao })
+  }
+
+  const onChangeDescricao = (value) => {
+    setDescricao(value)
+    updateReg({ id, nome, projeto, descricao: value })
+  }
+
+  return (
+    <div className={styles.server}>
+      <div className={styles.campo}>
+        <span>Nome:</span>
+        <input type="text" className={styles.campo_input} placeholder="Nome" value={nome} onChange={(e) => onChangeNome(e.target.value)}></input>
+      </div>
+      <div className={styles.campo}>
+        <span>Projeto:</span>
+        <input type="text" className={styles.campo_input} placeholder="Projeto" value={projeto} onChange={(e) => onChangeProjeto(e.target.value)}></input>
+      </div>
+      <div className={styles.campo}>
+        <span>Descrição:</span>
+        <textarea
+          ref={textareaRef}
+          placeholder="Descrição"
+          onChange={(e) => onChangeDescricao(e.target.value)}
+          value={descricao}
+          rows={10}
+          cols={30}
+        >
+        </textarea>
+      </div>
+
+
+      <div>
+        <button onClick={(e) => deleteReg(server)}>Remove</button>
+      </div>
+    </div>
+  );
+};
+
+export default Server;
