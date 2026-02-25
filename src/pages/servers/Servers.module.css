@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -6,4 +6,45 @@
 
 .disabled * {
     opacity: 80%;
+}
+
+.btnSave {
+    background-color: #4a90e2;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-right: 8px;
+}
+
+.btnSave:hover {
+    background-color: #357abd;
+}
+
+.btnSave:active {
+    transform: scale(0.97);
+}
+
+.btnAdd {
+    background-color: #9e9e9e;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btnAdd:hover {
+    background-color: #757575;
+}
+
+.btnAdd:active {
+    transform: scale(0.97);
 }

@@ -1,17 +1,81 @@
-.server{
+.server {
     display: flex;
     flex-flow: column;
-    border: 1px solid black;
-    padding-right: 5px;
-    margin: 3px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 8px;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
-.campo{
+.server:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.campo {
     display: flex;
     justify-content: space-between;
-    margin: 2px;
+    align-items: flex-start;
+    margin: 6px 0;
+    gap: 8px;
 }
 
-.campo_input{
+.campo span {
+    font-weight: 500;
+    color: #333;
+    min-width: 65px;
+    padding-top: 6px;
+    font-size: 13px;
+}
+
+.campo_input {
     width: 80%;
+    padding: 6px 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    font-size: 13px;
+    background: #fafafa;
+}
+
+.campo_input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.campo textarea {
+    padding: 6px 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    background: #fafafa;
+    resize: both;
+}
+
+.campo textarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.deleteIcon {
+    margin-top: auto;
+    align-self: flex-end;
+    color: #ff4757;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.deleteIcon:hover {
+    color: #e84142;
+    transform: scale(1.1);
+}
+
+.deleteIcon:active {
+    transform: scale(0.95);
 }
