@@ -1,0 +1,147 @@
+.overlay {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.modal {
+  background-color: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  padding: 28px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  color: #e0e0e0;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.btnClose {
+  background: transparent;
+  border: none;
+  color: #a0a0b0;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+
+.btnClose:hover {
+  color: #e0e0e0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  color: #a0a0b0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.field input {
+  background-color: #0f3460;
+  border: 1px solid #1a4a7a;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  padding: 10px 12px;
+  transition: border-color 0.2s;
+}
+
+.field input:focus {
+  border-color: #4a90d9;
+}
+
+.error {
+  color: #e07070;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.btnPrimary {
+  background-color: #0f3460;
+  border: 1px solid #4a90d9;
+  border-radius: 4px;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  transition: background-color 0.2s;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background-color: #1a4a7a;
+}
+
+.btnPrimary:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btnSecondary {
+  background-color: transparent;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #a0a0b0;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 18px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btnSecondary:hover {
+  border-color: #888;
+  color: #e0e0e0;
+}
+
+.successMsg {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.successMsg p {
+  color: #70c070;
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+}
